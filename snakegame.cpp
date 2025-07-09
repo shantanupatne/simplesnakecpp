@@ -173,6 +173,16 @@ class Game {
             
         }
 };
+
+void drawGrid() {
+    for (int i = 0; i<cellCount; i++) {
+        for (int j = 0; j <cellCount; j++) {
+            Color grid = {0, 0, 0, 16};
+            Rectangle rect = {(float)(i * cellSize + offset), (float)(j * cellSize + offset), (float)cellSize, (float)cellSize};
+            DrawRectangleLinesEx(rect, 0.8, grid);
+        }
+    }
+}
 int main() {
 
     std::cout << "Starting Game..." << std::endl;
@@ -196,9 +206,10 @@ int main() {
         
         ClearBackground(Background);
         Rectangle borders = {(float) offset - 4, (float)offset - 4, (float)cellSize*cellCount + 8, (float)cellSize*cellCount + 8};
-        DrawRectangleLinesEx(borders, 5, BLACK);
+        DrawRectangleLinesEx(borders, 4, BLACK);
         DrawText("Snake Game", offset - 4, 20, 40, BLACK);
         DrawText(TextFormat("%i", game.score), offset + (cellCount * cellSize) - 16, offset + (cellCount * cellSize) + 12, 40, BLACK);
+        drawGrid();
         game.Draw();
         EndDrawing();
     }
