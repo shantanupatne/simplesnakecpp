@@ -4,3 +4,4 @@ main
 *.dll
 *-workspace
 .vscode
+Makefile
